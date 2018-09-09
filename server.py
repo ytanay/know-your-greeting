@@ -38,5 +38,5 @@ def hello():
 
 
 if __name__ == '__main__':
-	app.run(port=int(os.environ.get('PORT') or '8001'), debug=True)
+	app.run(port=int(os.environ.get('PORT') or '8001'), host='0.0.0.0', debug=True)
 
