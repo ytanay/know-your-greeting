@@ -9,11 +9,8 @@ with open('lines.txt', 'r') as f:
 emoticons = '☺ ☻ ✌ ☹ ♡ ♥ ❤ ⚘ ❀ ❃ ❁ ✼ ☀ ✌ ♫ ♪ ☃ ❄ ❅ ❆'
 opening = ['לכבוד השנה החדשה', 'עם כניסת השנה החדשה', 'ובבוא השנה החדשה', 'יחד אל השנה החדשה', 'אספר לכם סיפור על השנה החדשה', 'נצעד אל פתח השנה החדשה', 'אין כמו שנה חדשה', 'רק היום נכנסת השנה']
 
-def get_line():
-	line = random.choice(lines).strip()
-	sel = random.random() 
-	if sel < 0.1:
-		return 'שנה טובה ומתוקה'
+def format_line(line):
+	sel = random.random()
 
 	if sel < 0.3:
 		return '<b>' + line + '</b>'
@@ -23,10 +20,14 @@ def get_line():
 	return line
 
 def make_greeting(length=None):
+	all_lines = list(lines)
+
+	random.shuffle(all_lines)
+
 	if length is None:
 		length = random.randrange(4, 30) * 2
 
-	return random.choice(opening) + ',<br/>' + '<br>'.join(get_line() for x in range(length))
+	return random.choice(opening) + ',<br/>' + '<br>'.join(format_line(all_lines.pop().strip()) for x in range(length))
 
 
 
