@@ -7,6 +7,7 @@ with open('lines.txt', 'r') as f:
 	lines = list(set(f.readlines()))
 
 emoticons = '☺ ☻ ✌ ☹ ♡ ♥ ❤ ⚘ ❀ ❃ ❁ ✼ ☀ ✌ ♫ ♪ ☃ ❄ ❅ ❆'
+opening = ['לכבוד השנה החדשה', 'עם כניסת השנה החדשה', 'ובבוא השנה החדשה', 'יחד אל השנה החדשה', 'אספר לכם סיפור על השנה החדשה', 'נצעד אל פתח השנה החדשה', 'אין כמו שנה חדשה', 'רק היום נכנסת השנה']
 
 def get_line():
 	line = random.choice(lines).strip()
@@ -25,7 +26,7 @@ def make_greeting(length=None):
 	if length is None:
 		length = random.randrange(4, 30) * 2
 
-	return '<br>'.join(get_line() for x in range(length))
+	return random.choice(opening) + ',<br/>' + '<br>'.join(get_line() for x in range(length))
 
 
 
